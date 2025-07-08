@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Noun</h1>
+      <h1 className="grid">Noun</h1>
       <div>
         <ul className="grid grid-cols-3 gap-4 text-center m-10 text-white font-extrabold">
           {" "}
