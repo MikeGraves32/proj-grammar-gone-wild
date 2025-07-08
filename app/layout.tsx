@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./src/index.css";
 
 import Link from "next/link";
 
@@ -30,10 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel=" stylesheet" href="globals.css" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
 
-      <head></head>
+      {/* <head></head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { DataItem } from "../public/types"; // Adjust path as needed
-import "./globals.css";
+import "./src/index.css";
 // import { Card } from "./components/Card";
 
 async function getData(filename: string): Promise<DataItem[]> {
