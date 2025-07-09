@@ -1,6 +1,6 @@
-@config "./tailwind.config.js";
+/* @config "./tailwind.config.js"; */
 @import "tailwindcss";
-@import "tailwindcss/utilities";
+/* @import "tailwindcss/utilities"; */
 
 :root {
   --background: #ffffff;

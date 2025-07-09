@@ -1,8 +1,8 @@
-@import 'tailwindcss/utilities' layer(utilities);
+/* @import 'tailwindcss/utilities' layer(utilities);
 @import 'tailwindcss' layer(utilities);
 @import './typography.css' layer(utilities);
 
-@config "./tailwind.config.js";
+@config "./tailwind.config.js"; */
 
 :root {
   --background: #ffffff;
