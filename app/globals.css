@@ -1,8 +1,11 @@
+@import 'tailwindcss;
 /* @import 'tailwindcss/utilities' layer(utilities);
 @import 'tailwindcss' layer(utilities);
 @import './typography.css' layer(utilities);
 
 @config "./tailwind.config.js"; */
+
+
 
 :root {
   --background: #ffffff;
@@ -75,4 +78,13 @@ main {
   @media (width >= 40rem) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+
+
+.back-card{
+  cursor-pointer h-24 w-full perspective";
+}
+
+.front-card{
+  
 }

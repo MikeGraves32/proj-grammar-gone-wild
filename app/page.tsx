@@ -1,42 +1,108 @@
-import { promises as fs } from "fs";
-import path from "path";
-import { DataItem } from "../public/types"; // Adjust path as needed
-import "./src/index.css";
-// import { Card } from "./components/Card";
+"use client";
 
-async function getData(filename: string): Promise<DataItem[]> {
-  const filePath = path.join(process.cwd(), "public", filename);
-  const fileContents = await fs.readFile(filePath, "utf8");
-  return JSON.parse(fileContents);
+import { useEffect, useState } from "react";
+import FlipCard from "@/app/components/FlipCard";
+import Image from "next/image"; // Assuming you're using next/image
+import Button from "@/app/components/Button/Button";
+import GrammarGoneWild from "@/public/img/grammar-gone-wild.png";
+// import FlipCard from "@/app/components/GrammarCard";
+import nouns from "@/public/data/nouns.json";
+import verbs from "@/public/data/verbs.json";
+import prepositions from "@/public/data/prepositions.json";
+import adverbs from "@/public/data/adverbs.json";
+
+// const Image = NextImage;
+
+interface WordItem {
+  category: string;
+  grammarType: string;
+  text: string;
 }
 
-export default async function Page() {
-  const data1 = await getData("references/nouns/nouns-animals.json");
-  const data2 = await getData("references/verbs/verbs-communication.json");
+export default function HomePage() {
+  const [flipped, setFlipped] = useState(false);
+  const [selectedCards, setSelectedCards] = useState<WordItem[]>([]);
+  const [buttonText, setButtonText] = useState<string>("Start the Game");
+  const [timer, setTimer] = useState<number>(120);
+  const [isRoundActive, setIsRoundActive] = useState<boolean>(false);
+  const [showImage, setShowImage] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (isRoundActive && timer > 0) {
+      const interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    } else if (timer === 0) {
+      setIsRoundActive(false);
+    }
+  }, [timer, isRoundActive]);
+
+  const totalSeconds = timer; // Example: 2 minutes and 30 seconds
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(seconds).padStart(2, "0");
+
+  const getRandomItem = (arr: WordItem[]): WordItem =>
+    arr[Math.floor(Math.random() * arr.length)];
+
+  const startRound = () => {
+    const picks = [
+      getRandomItem(nouns),
+      getRandomItem(verbs),
+      getRandomItem(prepositions),
+      getRandomItem(adverbs),
+    ];
+    setSelectedCards(picks);
+    setShowImage(false);
+    setFlipped(false);
+    setTimeout(() => setFlipped(true), 1000); // delay for flip
+    setTimer(120);
+    setIsRoundActive(true);
+    setButtonText("Next Round");
+  };
 
   return (
-    <div>
-      <h1 className="grid">Noun</h1>
+    <main style={{ padding: ".5rem" }}>
+      <h1>Grammar Flip Cards</h1>
+      <Button
+        label={buttonText}
+        onClick={startRound}
+        style={{
+          padding: "10px 20px",
+          marginBottom: "4px",
+          fontSize: "16px",
+          cursor: "pointer",
+        }}
+      ></Button>
       <div>
-        <ul className="grid grid-cols-3 gap-4 text-center m-10 text-white font-extrabold">
-          {" "}
-          {data1.map((item) => (
-            <li className="bg-blue-500 p-4 rounded-lg" key={item.id}>
-              {item.grammarType} | {item.category} | {item.text}
-            </li>
-          ))}
-        </ul>
+        <span className="ml-auto font-semibold">
+          ⏱ {formattedMinutes}:{formattedSeconds}
+        </span>
       </div>
-      <h1>Verb</h1>
-      <div>
-        <ul className="grid grid-cols-3 gap-4 text-center m-10 text-white font-extrabold">
-          {data2.map((item) => (
-            <li className="bg-blue-500 p-4 rounded-lg" key={item.id}>
-              {item.grammarType} | {item.category} | {item.text}
-            </li>
-          ))}
-        </ul>
+      {/* <span>
+        {formattedMinutes}:{formattedSeconds}
+      </span> */}
+      {showImage && (
+        <Image
+          src={GrammarGoneWild} // Replace with your image path
+          alt="Game Cover"
+          width={500}
+          height={300}
+        />
+      )}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+        {selectedCards.map((card, idx) => (
+          <FlipCard
+            key={idx}
+            category={card.category}
+            grammarType={card.grammarType}
+            text={card.text}
+            flipped={flipped}
+          />
+        ))}
       </div>
-    </div>
+    </main>
   );
 }
