@@ -2,7 +2,6 @@
 
 import { auth } from "@/auth";
 import { SignInButton } from "./components/sign-in-button";
-import Image from "next/image";
 import Link from "next/link";
 import { SignOutButton } from "./components/sign-out-button";
 

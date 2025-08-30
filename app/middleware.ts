@@ -10,7 +10,7 @@ export default async function middleware(request: NextRequest) {
     const isProtected = protectedRoutes.some((route) => pathname.startsWith(route));
 
     if (isProtected && !session) {
-        return NextResponse.redirect(new URL("api.auth/sigin", request.url))
+        return NextResponse.redirect(new URL("/api.auth/sigin", request.url))
     }
 
     return NextResponse.next();

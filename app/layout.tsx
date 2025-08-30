@@ -41,7 +41,7 @@ export default function RootLayout({
           <Link href="/instructions">Game Rules & Instructions</Link> |{" "}
           <Link href="/settings">Settings</Link>
         </nav>
-        <main>{children}</main>
+        <main className="bg-emerald-500">{children}</main>
       </body>
     </html>
   );
