@@ -23,7 +23,7 @@ export default function Game() {
   const [flipped, setFlipped] = useState(false);
   const [selectedCards, setSelectedCards] = useState<WordItem[]>([]);
   const [buttonText, setButtonText] = useState<string>("Start the Game");
-  const [timer, setTimer] = useState<number>(120);
+  const [timer, setTimer] = useState<number>(90);
   const [isRoundActive, setIsRoundActive] = useState<boolean>(false);
   const [showImage, setShowImage] = useState<boolean>(true);
 
@@ -57,10 +57,20 @@ export default function Game() {
     setSelectedCards(picks);
     setShowImage(false);
     setFlipped(false);
-    setTimeout(() => setFlipped(true), 1000); // delay for flip
-    setTimer(120);
-    setIsRoundActive(true);
-    setButtonText("Next Round");
+    setTimeout(() => {
+      setFlipped(true);
+      setButtonText("GET READY...");
+    }, 1000); // delay for flip
+    setTimeout(() => {
+      setTimer(90);
+      setIsRoundActive(true);
+      setButtonText("Countdown:");
+    }, 10000);
+    setTimeout(() => setButtonText("Round Over"), 101000);
+    setTimeout(() => setButtonText("Start Round"), 103000);
+    // setTimer(120);
+    // setIsRoundActive(true);
+    // setButtonText("Next Round");
   };
 
   return (

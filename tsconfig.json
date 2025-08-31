@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "app/game/page.jsx"  ],
+, "app/game/page.jsx", "app/api/teams/route.js", "app/components/CreateTeam.jsx", "app/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

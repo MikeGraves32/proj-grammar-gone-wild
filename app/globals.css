@@ -7,8 +7,6 @@
   --color-primary: #ff0000;
 }
 
-/* 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -80,9 +78,9 @@ main {
   @media (width >= 40rem) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-} 
+}
 
-
+/* 
 .back-card{
   cursor-pointer h-24 w-full perspective";
 }
