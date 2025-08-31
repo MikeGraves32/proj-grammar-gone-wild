@@ -1,11 +1,13 @@
-@import 'tailwindcss;
-/* @import 'tailwindcss/utilities' layer(utilities);
-@import 'tailwindcss' layer(utilities);
-@import './typography.css' layer(utilities);
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
-@config "./tailwind.config.js"; */
+@theme {
+  /* custom colors */
+  --color-primary: #ff0000;
+}
 
-
+/* 
 
 :root {
   --background: #ffffff;
@@ -78,7 +80,7 @@ main {
   @media (width >= 40rem) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
+} 
 
 
 .back-card{
@@ -87,4 +89,4 @@ main {
 
 .front-card{
   
-}
+}*/

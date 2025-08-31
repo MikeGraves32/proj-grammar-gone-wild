@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { SignInButton } from "./components/sign-in-button";
 import Link from "next/link";
 import { SignOutButton } from "./components/sign-out-button";
+import "./index.css";
 
 export default async function HomePage() {
   const session = await auth();
