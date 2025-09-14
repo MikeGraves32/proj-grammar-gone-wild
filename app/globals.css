@@ -26,8 +26,8 @@ body {
 }
 
 body {
-  background-image: url("@/public/img/brick_lines.jpg"); /* Replace with your image path */
-  background-repeat: repeat; /* Repeats the image horizontally and vertically */
+  /* background-image: url("@/public/img/brick_lines.jpg"); Replace with your image path */
+  /* background-repeat: repeat;  Repeats the image horizontally and vertically */
   /* color: var(--foreground);
   background: var(--background); */
   /* font-family: Arial, Helvetica, sans-serif;
